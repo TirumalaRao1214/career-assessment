@@ -24,5 +24,5 @@ const GOOGLE_FORM_CONFIG = {
    * Obtained via: Google Sheet → Extensions → Apps Script → Deploy → Web App
    * Execute as: Me | Who has access: Anyone
    */
-  APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzKJso3bA0MI7ms-qRU5Vc_EpxkhoRo6O0LsFD0PKb3zFS2-JDxpBGWrGgfDO240y1F/exec"
+  APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzJ7HkWkatMd_z-CLiRbGzlVesEr2l4AsJ5hT0ypw5SU1DcoRYr6QBNy3LARMq6E4DR/exec"
 };
