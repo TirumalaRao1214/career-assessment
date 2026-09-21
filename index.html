@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B.Tech Career & Skill Assessment | Understand Where You Are. Discover What To Focus On Next.</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand" data-nav="home-view">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+        </div>
+        <span>B.Tech Career Assessment</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#" class="nav-link active" data-target="home-view" data-nav="home-view">Home</a>
+        <a href="#" class="nav-link" data-target="assessment-view" data-nav="start">Take Assessment</a>
+        <a href="#" class="nav-link" data-target="dashboard-view" data-nav="dashboard-view">College Intelligence</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Views Container -->
+  <main>
+    
+    <!-- 1. HOME VIEW (HERO & FEATURES) -->
+    <section id="home-view" class="app-view">
+      
+      <!-- Cinematic Hero Section -->
+      <div class="hero-section">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-gradient-overlay"></div>
+        <div class="container hero-content">
+          <div class="hero-badges">
+            <span class="badge badge-blue">⏱️ 5–7 Minute Assessment</span>
+            <span class="badge badge-emerald">✨ 100% Free</span>
+            <span class="badge badge-purple">🎯 Student Focused</span>
+            <span class="badge badge-amber">📊 Personalized Insights</span>
+          </div>
+
+          <h1 class="hero-title">Your B.Tech Journey. Your Next Move.</h1>
+          <p class="hero-subheading">
+            Understand where you are today. Discover what to focus on next. Take a personalized diagnostic built for B.Tech students across all engineering branches, years, and colleges.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg" data-nav="start">
+              Start My Assessment →
+            </button>
+            <p class="hero-secondary-text">
+              Your answers help us understand what students and colleges need to focus on.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="container features-section">
+        <div style="text-align: center; max-width: 650px; margin: 0 auto;">
+          <h2 style="font-size: 2rem; margin-bottom: 12px;">Built for Every Engineering Student</h2>
+          <p>Whether you're targeting Software, Core Engineering, PSUs, or Higher Studies — get clear, actionable direction.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card glass-panel">
+            <div class="feature-icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Identify Skill Gaps</h3>
+            <p style="font-size: 0.92rem;">Evaluate your core technical competencies, communication poise, coding readiness, and practical project mastery.</p>
+          </div>
+
+          <div class="feature-card glass-panel">
+            <div class="feature-icon-wrapper" style="color: #c4b5fd; background: rgba(139, 92, 246, 0.15);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Personalized Roadmap</h3>
+            <p style="font-size: 0.92rem;">Receive a tailored 90-day action plan highlighting specific projects, aptitude practice, and interview milestones.</p>
+          </div>
+
+          <div class="feature-card glass-panel">
+            <div class="feature-icon-wrapper" style="color: #6ee7b7; background: rgba(16, 185, 129, 0.15);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 8px;">College-Level Insights</h3>
+            <p style="font-size: 0.92rem;">Help your institution understand collective student needs to deliver high-impact workshops, hackathons, and placement drives.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ASSESSMENT WIZARD VIEW -->
+    <section id="assessment-view" class="app-view" style="display: none;">
+      <div class="container assessment-container">
+        
+        <!-- Header Progress -->
+        <div class="wizard-header">
+          <div class="step-indicator">
+            <span id="step-title-badge" class="step-title-badge">Step 1: About You</span>
+            <span id="step-count-text" class="step-count">Step 1 of 10</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Dynamic Step Card -->
+        <div class="wizard-card glass-panel">
+          <div id="wizard-step-content">
+            <!-- Dynamically injected step HTML -->
+          </div>
+        </div>
+
+        <!-- Wizard Navigation Footer -->
+        <div class="wizard-footer">
+          <button id="wizard-back-btn" class="btn btn-secondary" onclick="App.prevStep()">
+            ← Back
+          </button>
+          <button id="wizard-next-btn" class="btn btn-primary" onclick="App.nextStep()">
+            Continue →
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. STUDENT PERSONALIZED SNAPSHOT RESULT VIEW -->
+    <section id="result-view" class="app-view" style="display: none;">
+      <div class="container" style="max-width: 900px; padding-top: 40px; padding-bottom: 80px;">
+        <div id="student-result-container">
+          <!-- Dynamically injected snapshot report -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. COLLEGE INTELLIGENCE & ANALYTICS DASHBOARD VIEW -->
+    <section id="dashboard-view" class="app-view" style="display: none;">
+      <div class="container" style="padding-top: 30px; padding-bottom: 80px;">
+        
+        <div class="dash-header">
+          <div>
+            <div class="badge badge-purple" style="margin-bottom: 8px;">Institutional Intelligence</div>
+            <h1 style="font-size: 2.2rem;">College & Regional Development Dashboard</h1>
+            <p style="color: var(--text-muted);">Aggregate real-time analytics for academic leaders, training officers, and district coordinators.</p>
+          </div>
+          <div style="display:flex; gap: 12px; align-items:center; flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" onclick="App.renderDashboard()">
+              Refresh Analytics
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filters-bar glass-panel">
+          <div>
+            <label class="form-label" style="font-size:0.8rem;">College</label>
+            <select id="dash-filter-college" class="form-control" onchange="App.renderDashboard()">
+              <option value="ALL">All Colleges</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;">District</label>
+            <select id="dash-filter-district" class="form-control" onchange="App.renderDashboard()">
+              <option value="ALL">All Districts</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;">City / Town</label>
+            <select id="dash-filter-city" class="form-control" onchange="App.renderDashboard()">
+              <option value="ALL">All Cities</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;">Branch</label>
+            <select id="dash-filter-branch" class="form-control" onchange="App.renderDashboard()">
+              <option value="ALL">All Branches</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;">Year</label>
+            <select id="dash-filter-year" class="form-control" onchange="App.renderDashboard()">
+              <option value="ALL">All Years</option>
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="4th Year">4th Year</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;">Career Goal</label>
+            <select id="dash-filter-goal" class="form-control" onchange="App.renderDashboard()">
+              <option value="ALL">All Goals</option>
+              <option value="Software / IT">Software / IT</option>
+              <option value="Core Engineering">Core Engineering</option>
+              <option value="Government Jobs">Government Jobs</option>
+              <option value="Higher Studies">Higher Studies</option>
+              <option value="Startup / Entrepreneurship">Startup</option>
+            </select>
+          </div>
+          <div style="display:flex; align-items:flex-end;">
+            <button class="btn btn-secondary btn-sm" style="width:100%; height: 42px;" onclick="App.resetFilters()">
+              Reset Filters
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Notice when no survey records exist -->
+        <div id="dash-empty-notice" style="display: none;"></div>
+
+        <!-- Dashboard Analytics Content Area -->
+        <div id="dash-content-area">
+          
+          <!-- KPI Metrics -->
+          <div class="kpi-grid">
+            <div class="kpi-card glass-panel">
+              <div class="kpi-label">Assessed Students</div>
+              <div id="kpi-total-students" class="kpi-value">0</div>
+              <div class="kpi-sub" style="color: #93c5fd;">Across participating colleges</div>
+            </div>
+            <div class="kpi-card glass-panel">
+              <div class="kpi-label">Average Readiness Index</div>
+              <div id="kpi-avg-readiness" class="kpi-value">0/100</div>
+              <div class="kpi-sub" style="color: #6ee7b7;">Holistic benchmark</div>
+            </div>
+            <div class="kpi-card glass-panel">
+              <div class="kpi-label">Internship Penetration</div>
+              <div id="kpi-internship-rate" class="kpi-value">0%</div>
+              <div class="kpi-sub" style="color: #fde047;">Industry exposure metric</div>
+            </div>
+            <div class="kpi-card glass-panel">
+              <div class="kpi-label">2+ Hands-on Projects</div>
+              <div id="kpi-projects-rate" class="kpi-value">0%</div>
+              <div class="kpi-sub" style="color: #c4b5fd;">Practical readiness metric</div>
+            </div>
+          </div>
+
+          <!-- Student Skill Development Heatmap -->
+          <div class="glass-panel" style="padding: 28px; margin-bottom: 32px;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 6px;">🎯 Student Skill Development Heatmap</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+              Identifies aggregate institutional areas where students need structured curriculum interventions and practical coaching.
+            </p>
+            <div style="overflow-x: auto;">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Competency Domain</th>
+                    <th>Institutional Need Level</th>
+                    <th>Cohort Proficiency Index</th>
+                    <th>Diagnostic Observation</th>
+                  </tr>
+                </thead>
+                <tbody id="heatmap-table-body">
+                  <!-- Dynamically populated from actual survey responses -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Recommendations for Colleges & Challenges Breakdown -->
+          <div class="analytics-grid-2">
+            
+            <div class="glass-panel" style="padding: 28px;">
+              <h3 style="font-size: 1.2rem; margin-bottom: 16px; color: #c4b5fd;">
+                💡 Priority Interventions for Tutors & Colleges
+              </h3>
+              <div id="college-recs-container">
+                <!-- Dynamically populated recommendations -->
+              </div>
+            </div>
+
+            <div class="glass-panel" style="padding: 28px;">
+              <h3 style="font-size: 1.2rem; margin-bottom: 16px; color: #fda4af;">
+                ⚠️ Top Reported Student Bottlenecks
+              </h3>
+              <div id="dash-challenges-list">
+                <!-- Dynamically populated challenges -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Career Preference Distribution -->
+          <div class="glass-panel" style="padding: 28px; margin-top: 32px;">
+            <h3 style="font-size: 1.2rem; margin-bottom: 16px; color: #93c5fd;">
+              🧭 Student Career Aspiration Distribution
+            </h3>
+            <div id="dash-career-dist">
+              <!-- Dynamically populated career goals -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom: 6px;"><strong>B.Tech Career & Skill Assessment Platform</strong></p>
+      <p>Serving B.Tech Students, Trainers, and Engineering Colleges across India.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts — no API keys, credentials, or spreadsheet URLs in any of these files -->
+  <script src="js/data.js"></script>
+  <script src="js/assessment-engine.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/googleFormConfig.js"></script>
+  <script src="js/googleFormService.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

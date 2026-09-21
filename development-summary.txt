@@ -1,0 +1,236 @@
+================================================================================
+B.TECH CAREER & SKILL ASSESSMENT PLATFORM - DEVELOPMENT OVERVIEW & DOCUMENTATION
+================================================================================
+
+TAGLINE:
+"Understand Where You Are. Discover What To Focus On Next."
+
+TARGET AUDIENCE:
+All B.Tech students across all engineering branches, colleges, years, cities,
+and districts in India. Also serves tutors, trainers, and academic institutions.
+
+================================================================================
+1. EXECUTIVE SUMMARY & ARCHITECTURAL FOUNDATION
+================================================================================
+
+We have developed a modern, high-performance, responsive EdTech web application
+designed to diagnose student engineering competencies, identify skill gaps, provide
+actionable personalized 90-day roadmaps, and generate aggregate institutional
+intelligence for engineering colleges.
+
+KEY ARCHITECTURAL HIGHLIGHTS:
+* Frontend: Vanilla JavaScript (ES6+), HTML5, Custom CSS3 Design System.
+* Zero external bloated UI dependencies (ultra-fast loading on mobile and desktop).
+* Decoupled Backend Service: Secure Google Sheets Integration via Google Apps Script.
+* Security Guarantee: Zero Google API keys, service accounts, or spreadsheet secrets
+  exposed in frontend code.
+* Future-Proofing: Ready for seamless upgrade to ASP.NET Core Web API + SQL Server
+  without rewriting survey UI or calculation engines.
+
+================================================================================
+2. COMPREHENSIVE FILE STRUCTURE CREATED
+================================================================================
+
+btech-career-assessment/
+├── index.html                  # Core single-page application with 4 main views
+├── css/
+│   └── style.css               # Premium EdTech design system with glassmorphism
+├── js/
+│   ├── data.js                 # States, AP districts, colleges, and branch skill matrices
+│   ├── assessment-engine.js    # 8-dimensional competency & recommendation engine
+│   ├── googleSheetsService.js  # Decoupled Google Apps Script Web App service layer
+│   ├── storage.js              # Persistence, local caching, and CSV export utilities
+│   ├── analytics.js            # Real-time institutional aggregation & heatmap engine
+│   └── app.js                  # Main wizard controller, validation & UI manager
+├── google-apps-script.js       # Complete Google Apps Script backend code (doPost & doGet)
+└── README.md                   # Full deployment & configuration documentation
+
+================================================================================
+3. CORE MODULES & FEATURES DEVELOPED
+================================================================================
+
+--------------------------------------------------------------------------------
+A. PREMIUM EDTECH DESIGN SYSTEM (style.css)
+--------------------------------------------------------------------------------
+- Design Philosophy: Modern, aspirational, professional, and technology-focused.
+- Cinematic Hero: Full-screen background image of Indian engineering students
+  collaborating in high-tech laboratories with high-contrast readable dark overlays.
+- Visual Features: Glassmorphism panels (backdrop-filter: blur(16px)), subtle borders,
+  rounded cards, modern typography (Inter), soft gradient accents, and clean SVG icons.
+- Touch-Friendly Rating Cards: 1-to-5 interactive rating pills instead of plain dropdowns.
+- 100% Mobile Responsive: Perfectly tested on Android, iPhone, iPad, tablets,
+  laptops, and wide desktop displays.
+
+--------------------------------------------------------------------------------
+B. 10-STEP SURVEY WIZARD (app.js, data.js, index.html)
+--------------------------------------------------------------------------------
+Every single step is strictly validated with user-friendly error messages
+("Please complete this field before continuing." / "Please select an option to continue."):
+
+Step 1: Student Information
+  - Full Name (required)
+  - College/Personal Email (strict email format validation)
+  - Mobile Number (validated 10-digit Indian mobile format)
+  - Gender (Male, Female, Prefer not to say, Other)
+
+Step 2: College & Geographic Location
+  - State (Default: Andhra Pradesh, supports all Indian states)
+  - College District (All 26 AP districts + Other)
+  - College City / Town (required text field)
+  - College Name (Searchable dropdown with major universities & colleges + "Other College")
+  - Area Type (Urban, Semi-Urban, Rural)
+  - College Type (Government, Government Aided, Private, Deemed University, University, Other)
+
+Step 3: B.Tech Academic & Career Ambition
+  - Branch of Engineering (CSE, IT, ECE, EEE, Mech, Civil, AI&ML, AI&DS, CSBS, Chem, Biotech, Other)
+  - Current Year (1st, 2nd, 3rd, 4th Year)
+  - Current Semester (1st through 8th Semester)
+  - Academic Aggregate Performance (Below 60%, 60-69%, 70-79%, 80-89%, 90%+)
+  - Primary Career Direction (Software/IT, Core Engg, Govt Jobs, Higher Studies, Research, Startup, etc.)
+  - Career Direction Clarity (Very Clear, Mostly Clear, Somewhat Clear, Not Clear, Completely Unsure)
+  - Exploration questions if "Not Sure Yet" is selected.
+
+Step 4: Common & Professional Skills (1 to 5 Rating Cards)
+  - Communication Skills
+  - Professional English Fluency
+  - Problem Solving Ability
+  - Logical & Analytical Thinking
+  - Quantitative Aptitude & Math
+  - Presentation & Public Speaking
+  - Teamwork & Collaboration
+  - Time & Task Management
+  - Self-Directed Learning
+  - Self Confidence & Poise
+  - Modern AI Tools Usage
+  - General Computer & Digital Proficiency
+
+Step 5: Dynamic Branch-Specific Technical Skills (1 to 5 Rating Cards)
+  - Dynamically updates based on selected branch:
+    * CSE/IT: C/C++, Java, Python, SQL, DSA, Web Dev, APIs, Git/GitHub, Cloud, AI/ML
+    * ECE: Digital Electronics, Analog, Embedded C/C++, Microcontrollers, VLSI, IoT, PCB
+    * EEE: Electrical Machines, Power Systems, Control Systems, Power Electronics, MATLAB, PLC
+    * Mechanical: CAD, SolidWorks, Thermodynamics, Manufacturing, CNC, FEA/ANSYS
+    * Civil: AutoCAD, Structural Design, Surveying, STAAD.Pro, Revit, Estimation
+    * Chemical, Biotechnology, AI&DS, CSBS, and Other engineering branches
+
+Step 6: Projects & Practical Experience
+  - Meaningful projects count (None, 1, 2, 3, 4+)
+  - Real-world utility beyond lab exercises (Yes, No, Currently working on one)
+  - Confidence in explaining technical architecture & decisions
+  - Active GitHub / Portfolio profile (Yes, No, Planning to create one)
+
+Step 7: Internships & Placement Readiness
+  - Internship completion status (Yes, No, Currently doing one)
+  - Internship domain, duration, paid/unpaid, and career relevance
+  - ATS Resume status (Ready, Needs Improvement, Not Created)
+  - Quantitative Aptitude readiness
+  - Technical Interview readiness
+  - Coding & Online Test readiness (for Software/IT & computing branches)
+  - HR / Behavioral Interview readiness
+  - Mock Interview experience (Multiple, 1-2, Never)
+
+Step 8: AI & Emerging Technologies
+  - Multi-select AI tools usage (Learning, Coding, Projects, Research, Resume, Content)
+  - Responsible AI prompting & workflow confidence (1 to 5 rating)
+
+Step 9: Biggest Challenges & 6-Month Goals
+  - Multi-select bottlenecks (Lack of technical skills, Communication, Confidence, Projects, etc.)
+  - Preferred learning modes (Live classes, Mentoring, Projects, Bootcamps, Workshops)
+  - Top 6-month improvement priority
+
+Step 10: Review & Final Submission
+  - Summary of profile, Data Privacy Notice, and submission trigger.
+
+--------------------------------------------------------------------------------
+C. ASSESSMENT & RECOMMENDATION ENGINE (assessment-engine.js)
+--------------------------------------------------------------------------------
+Calculates 8 holistic, unbiased competency dimensions (0 to 100):
+1. Career Clarity
+2. Technical Skill Readiness
+3. Practical Hands-on Experience
+4. Placement Readiness
+5. Communication & Articulation
+6. Interview Readiness
+7. Industry & Internship Exposure
+8. Modern AI Readiness
+
+Generates the Personalized "B.Tech Career Snapshot":
+- Overall Readiness Index (0-100) with tier labels (Exceptional, Solid, Developing, Foundation)
+- Top 4 individual student strengths
+- Prioritized areas to concentrate on (with High/Medium Need indicators)
+- Personalized 90-Day Action Roadmap (DSA practice, Capstone projects, Mock clinics, Domain tools)
+- Configurable rule engine reading directly from metadata / Google Sheets rules.
+
+--------------------------------------------------------------------------------
+D. GOOGLE SHEETS BACKEND INTEGRATION (googleSheetsService.js, google-apps-script.js)
+--------------------------------------------------------------------------------
+Multi-Worksheet Google Spreadsheet Architecture:
+
+1. "Responses" Worksheet (48 Columns):
+   Timestamp, Response ID, Full Name, Email, Mobile, College, District, City, State,
+   Area Type, College Type, Branch, Year, Semester, Academic Performance, Career Goal,
+   Career Clarity, Communication Score, English Score, Problem Solving Score,
+   Logical Thinking Score, Aptitude Score, Presentation Score, Teamwork Score,
+   Time Management Score, Self Learning Score, Confidence Score, AI Skills Score,
+   Technical Skills, Programming Skills, SQL Skills, Project Count, Project Experience,
+   Internship Status, Internship Domain, Resume Readiness, Aptitude Readiness,
+   Technical Interview Readiness, HR Interview Readiness, Coding Readiness, AI Usage,
+   Challenges, Learning Preferences, Six Month Goal, Overall Assessment, Strengths,
+   Focus Areas, Recommendations.
+
+2. "Colleges" Worksheet:
+   College ID, College Name, District, City, State, College Type, Active.
+
+3. "Recommendations" Worksheet:
+   Rule ID, Branch, Career Goal, Skill, Minimum Score, Maximum Score, Priority,
+   Recommendation, Recommended Action.
+
+4. "Questions" Worksheet:
+   Question ID, Section, Question, Branch, Question Type, Required, Options, Weight, Active.
+
+Submission Reliability & Safety:
+- Collision-resistant Response ID: Format `BT2026-XXXXXX` (e.g., BT2026-000001).
+- Button disabled during transmission to prevent duplicate submissions.
+- Zero Data Loss: Student inputs are preserved in browser memory if network drops.
+- Friendly Error Message on failure: "We couldn't save your assessment. Please try again."
+
+--------------------------------------------------------------------------------
+E. COLLEGE INTELLIGENCE & ANALYTICS DASHBOARD (analytics.js, app.js)
+--------------------------------------------------------------------------------
+Strict Real-Data Intelligence:
+- NO fake statistics, NO artificial rankings, NO unsupported claims.
+- If zero responses exist, displays: "No assessment data available yet."
+- Real-Time Multi-Dimensional Filters:
+  * College
+  * District
+  * City / Town
+  * Branch
+  * Year
+  * Semester
+  * Career Goal
+- Real-Time Calculated Metrics:
+  * Total Assessed Students
+  * Average Holistic Readiness Index
+  * Internship Penetration Rate (%)
+  * 2+ Hands-on Projects Rate (%)
+  * Student Skill Development Heatmap (High / Medium / Low institutional need)
+  * Priority Interventions for Tutors & Academic Leaders
+  * Student Reported Bottlenecks & Career Distribution Charts
+  * One-click CSV Data Export for institutional administrators.
+
+================================================================================
+4. HOW TO RUN & DEPLOY
+================================================================================
+
+LOCAL TESTING:
+Simply open `btech-career-assessment/index.html` in Google Chrome, Microsoft Edge,
+or any modern browser.
+
+HOSTING ON RENDER / STATIC HOSTS:
+1. Push the `btech-career-assessment` repository to GitHub.
+2. Link the repository to Render (Static Site) with publish directory `./btech-career-assessment` (or root).
+3. Connect your deployed Google Apps Script Web App URL via the in-app "Google Sheets / API" modal.
+
+================================================================================
+B.Tech Career & Skill Assessment Platform — Developed and Ready for Demonstration.
+================================================================================
