@@ -51,44 +51,27 @@ const GoogleFormService = {
     const endpoint = GOOGLE_FORM_CONFIG.APPS_SCRIPT_URL;
 
     try {
-      // Google Apps Script Web Apps redirect POST to a new URL.
-      // Using redirect: "follow" ensures fetch follows the 302 automatically.
-      const response = await fetch(endpoint, {
+      // Google Apps Script Web Apps have a known CORS limitation:
+      // A cross-origin POST with redirect:follow causes the browser to convert
+      // the redirected request to a GET (per the Fetch spec), which hits doGet
+      // instead of doPost. Using mode:"no-cors" avoids this — the POST goes
+      // through correctly and Apps Script writes the row. The response is
+      // opaque (unreadable) but the submission is recorded server-side.
+      await fetch(endpoint, {
         method: "POST",
-        redirect: "follow",
+        mode: "no-cors",
         headers: {
-          // text/plain avoids CORS preflight — required for Google Apps Script Web Apps
           "Content-Type": "text/plain;charset=utf-8"
         },
         body: JSON.stringify(payload)
       });
 
-      // Apps Script always returns 200 on the final redirected response.
-      // If we still get a non-OK status, something is wrong with the deployment.
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-
-      let result;
-      try {
-        result = await response.json();
-      } catch (parseErr) {
-        // Apps Script returned non-JSON (e.g. HTML error page) — still treat as success
-        // because the row was likely written before the response was malformed.
-        console.warn("Could not parse Apps Script response as JSON:", parseErr);
-        return { success: true, responseId };
-      }
-
-      if (result && result.success !== false) {
-        return {
-          success: true,
-          responseId: result.responseId || responseId
-        };
-      } else {
-        throw new Error(result.message || "Apps Script returned an error.");
-      }
+      // With no-cors the response is always opaque — we cannot read it.
+      // If fetch did not throw, the request reached Google's servers.
+      return { success: true, responseId };
 
     } catch (err) {
+      // fetch only throws on actual network failures (offline, DNS error).
       console.error("Submission error:", err);
       throw new Error("Submission failed. Your answers have been preserved. Please try again.");
     }
