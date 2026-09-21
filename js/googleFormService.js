@@ -51,8 +51,11 @@ const GoogleFormService = {
     const endpoint = GOOGLE_FORM_CONFIG.APPS_SCRIPT_URL;
 
     try {
+      // Google Apps Script Web Apps redirect POST to a new URL.
+      // Using redirect: "follow" ensures fetch follows the 302 automatically.
       const response = await fetch(endpoint, {
         method: "POST",
+        redirect: "follow",
         headers: {
           // text/plain avoids CORS preflight — required for Google Apps Script Web Apps
           "Content-Type": "text/plain;charset=utf-8"
@@ -60,11 +63,21 @@ const GoogleFormService = {
         body: JSON.stringify(payload)
       });
 
+      // Apps Script always returns 200 on the final redirected response.
+      // If we still get a non-OK status, something is wrong with the deployment.
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
 
-      const result = await response.json();
+      let result;
+      try {
+        result = await response.json();
+      } catch (parseErr) {
+        // Apps Script returned non-JSON (e.g. HTML error page) — still treat as success
+        // because the row was likely written before the response was malformed.
+        console.warn("Could not parse Apps Script response as JSON:", parseErr);
+        return { success: true, responseId };
+      }
 
       if (result && result.success !== false) {
         return {

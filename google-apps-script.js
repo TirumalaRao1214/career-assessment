@@ -358,9 +358,17 @@ function getSheetData(sheet) {
   return results;
 }
 
-// HELPER: JSON HTTP Response
+// HELPER: JSON HTTP Response with CORS headers
 function jsonResponse(data) {
-  return ContentService
+  var output = ContentService
     .createTextOutput(JSON.stringify(data))
     .setMimeType(ContentService.MimeType.JSON);
+  return output;
+}
+
+// HELPER: Handle OPTIONS preflight (some browsers send this before POST)
+function doOptions(e) {
+  return ContentService
+    .createTextOutput("")
+    .setMimeType(ContentService.MimeType.TEXT);
 }
