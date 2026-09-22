@@ -1171,6 +1171,13 @@ const App = {
           </svg>
           Print / Save PDF Snapshot
         </button>
+        <button class="btn btn-outline btn-lg" onclick="App.retakeAssessment()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 .49-3.85"></path>
+          </svg>
+          Retake Assessment
+        </button>
         <button class="btn btn-secondary btn-lg" onclick="App.showView('dashboard-view')">
           View College Intelligence Dashboard →
         </button>
@@ -1372,6 +1379,37 @@ const App = {
     });
     this.renderDashboard();
   },
+
+  retakeAssessment() {
+    // Reset all form data back to defaults
+    this.formData = {
+      fullName: "", email: "", mobile: "", gender: "",
+      collegeName: "", otherCollegeName: "",
+      district: "Guntur", city: "", state: "Andhra Pradesh",
+      areaType: "Semi-Urban", collegeType: "Private",
+      branch: "Computer Science & Engineering", otherBranchName: "",
+      year: "3rd Year", semester: "5th Semester",
+      academicPerformance: "70–79%",
+      careerGoal: "Software / IT", careerClarity: "Mostly Clear", unclearReason: "",
+      commonSkills: {}, branchSkills: {},
+      projectsCount: "2", realWorldProject: "Currently working on one",
+      projectExplanationConfidence: "Confident", hasPortfolio: "Planning to create one",
+      hasInternship: "No", internshipDomain: "", internshipDuration: "",
+      internshipType: "Unpaid", internshipRelevant: "Yes",
+      resumeReadiness: "Needs Improvement", aptitudeReadiness: "Average",
+      technicalInterviewReadiness: "Good", hrInterviewReadiness: "Average",
+      codingReadiness: "Good", mockInterviews: "1–2",
+      aiUsage: [], aiConfidence: 3,
+      challenges: [], learningPreferences: [],
+      sixMonthGoal: "Technical Skills"
+    };
+    // Reset wizard to step 1
+    this.currentStep = 1;
+    this.isSubmitting = false;
+    this.renderStep(1);
+    this.showView("assessment-view");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
 };
 
